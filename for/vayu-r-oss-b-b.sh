@@ -15,5 +15,5 @@ TypeBuildTag="[Stable][LTO]"
 CloneKernel "--depth=1"
 CloneCompiledGccTwelve
 CloneDTCClang
-DisableThin
+DisableMsmP
 CompileClangKernelLLVMB && CleanOut
