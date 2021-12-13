@@ -1,0 +1,82 @@
+name: Building New Kernel
+
+on: [push]
+
+env:
+  GIT_SECRETB: ${{ secrets.GIT_SECRETB }}
+  GIT_SECRET: ${{ secrets.GIT_SECRET }}
+  BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+  ZIP_PASS: ${{ secrets.ZIP_PASS }}
+  TZ: Asia/Jakarta
+
+jobs:
+  build-vayu-r-oss-b-b:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: initialize
+        run: |
+          chmod +x misc/initialize.sh
+          sudo bash misc/initialize.sh
+
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+            swap-size-gb: 12
+
+      - name: Compile Kernel
+        run: |
+          chmod +x maing.sh
+          bash maing.sh 'vayu-r-oss-b-b'
+
+  build-vayu-r-oss-b-a:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: initialize
+        run: |
+          chmod +x misc/initialize.sh
+          sudo bash misc/initialize.sh
+
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+            swap-size-gb: 12
+
+      - name: Compile Kernel
+        run: |
+          chmod +x maing.sh
+          bash maing.sh 'vayu-r-oss-b-a'
+
+  build-vayu-r-oss-b-c:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: initialize
+        run: |
+          chmod +x misc/initialize.sh
+          sudo bash misc/initialize.sh
+
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+            swap-size-gb: 12
+
+      - name: Compile Kernel
+        run: |
+          chmod +x maing.sh
+          bash maing.sh 'vayu-r-oss-b-c'
+
